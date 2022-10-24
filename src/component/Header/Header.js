@@ -16,7 +16,11 @@ const Header = () => {
             className='inline-flex items-center'
           >
             <FaCentos className='text-purple-600 font-bold text-2xl'></FaCentos>
+           
+
             <span className='ml-2 text-xl font-bold tracking-wide text-purple-600 text-shadow-lg'>
+            Easy developer
+
             </span>
           </Link>
           <ul className='flex items-center hidden space-x-8 sm:flex'>
@@ -73,8 +77,9 @@ const Header = () => {
                        
                                     <FaCentos className=' font-bold text-2xl'></FaCentos>
 
-                        <span className='ml-2  text-xl font-bold tracking-wide text-purple-600  uppercase'>
-                     
+                        <span className='ml-2  text-xl font-bold tracking-wide uppercase'>
+                        Easy developer
+
                                                   
                         </span>
                       </Link>
