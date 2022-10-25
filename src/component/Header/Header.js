@@ -1,12 +1,32 @@
 import React, { useContext, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { FaCentos } from "react-icons/fa";
+import { AuthContext } from '../../context/UserContext';
+
+
+
 
 const Header = () => {
 
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const { user, logOut } = useContext(AuthContext);
+
+
+
 
   const [courses, setCourses] = useState('Courses')
+
+
+
+
+
+  const handleSignOut = () => {
+      logOut()
+          .then(() => { })
+          .catch(error => console.error(error));
+  }
+
+
   
   const handleCourses = () => {
      
@@ -96,6 +116,31 @@ const Header = () => {
                 Blog
               </NavLink>
             </li>
+
+
+            
+            {
+                    user?.uid ?
+                        <button className='btn-logout' onClick={handleSignOut}>Log out</button>
+                        :
+                        <>
+                             <li>
+                <NavLink
+                              to='/login'
+                              aria-label='About Us'
+                              title='About Us'
+                              className='font-medium tracking-wide text-purple-600 transition-colors duration-200 hover:text-deep-purple-accent-400'
+                            >
+                              Login
+                            </NavLink>
+                  </li> 
+                  
+         
+                  
+
+                        </>
+                }
+          
  
             
           

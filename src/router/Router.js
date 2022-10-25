@@ -11,6 +11,7 @@ import Blog from '../component/blog/Blog';
 import Courses from '../component/courses/Courses';
 import Details from '../component/details/Details';
 import CheckoutRoute from '../component/Checkout route/CheckoutRoute';
+import PrivateRouter from '../private/PrivateRouter';
 
 
 
@@ -66,7 +67,7 @@ const router = createBrowserRouter([{
         loader: ({params}) => fetch(`https://my-education-process.vercel.app/details/${params.id}`),
 
        
-        element: <CheckoutRoute></CheckoutRoute>
+        element: <PrivateRouter> <CheckoutRoute></CheckoutRoute></PrivateRouter> 
       },
       {
         path: '/login',

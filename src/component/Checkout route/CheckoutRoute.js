@@ -17,7 +17,7 @@ const CheckoutRoute = () => {
     
     <h2 className='w-[150px] flex items-center'><FaCalendarAlt></FaCalendarAlt> <span className='px-4'>{time}</span> </h2>
 
-    <p className='h-[100px]'>{ details}</p>
+    <p className=''>{ details}</p>
           <div className="card-actions justify-center">
           <button className="btn w-[100%] sm:w-[50%] bg-[#dc3545] my-4"> Join Now</button>
 
