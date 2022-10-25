@@ -5,6 +5,18 @@ import { FaCentos } from "react-icons/fa";
 const Header = () => {
 
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+  const [courses, setCourses] = useState('Courses')
+  
+  const handleCourses = () => {
+     
+    const name = 'Classes'
+    setCourses(name)
+    
+
+   }
+
+
   return (
     <div className='bg-gray-100'>
       <div className='px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8'>
@@ -15,11 +27,11 @@ const Header = () => {
             title='proReader'
             className='inline-flex items-center'
           >
-            <FaCentos className='text-purple-600 font-bold text-2xl'></FaCentos>
+            <FaCentos className='text-[#ff594e] font-bold text-2xl'></FaCentos>
            
 
-            <span className='ml-2 text-xl font-bold tracking-wide text-purple-600 text-shadow-lg'>
-            Easy developer
+            <span className='ml-2 text-xl font-bold tracking-wide #302e2c text-shadow-lg'>
+            Modern <span className='text-[#ff594e]'>Education</span>
 
             </span>
           </Link>
@@ -31,13 +43,60 @@ const Header = () => {
                 title='Home'
                 className={({ isActive }) =>
                   isActive
-                    ? 'font-medium tracking-wide text-blue-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
-                    : 'font-medium tracking-wide text-purple-600 transition-colors duration-200 hover:text-deep-purple-accent-400'
+                    ? 'font-medium tracking-wide text-[#ff594e]  transition-colors duration-200 hover:text-deep-purple-accent-400'
+                    : 'font-medium tracking-wide text-[#302e2c] transition-colors duration-200 hover:text-deep-purple-accent-400'
                 }
               >
                 Home
               </NavLink>
             </li>
+
+            <li>
+              <NavLink
+                to='/Courses'
+                aria-label='Home'
+                title='Home'
+                className={({ isActive }) =>
+                  isActive
+                    ? 'font-medium tracking-wide text-[#ff594e]  transition-colors duration-200 hover:text-deep-purple-accent-400'
+                    : 'font-medium tracking-wide text-[#302e2c] transition-colors duration-200 hover:text-deep-purple-accent-400'
+                }
+              >
+                <button onFocus={handleCourses}>{courses}</button>
+              </NavLink>
+            </li>
+
+
+            <li>
+              <NavLink
+                to='/FAQ'
+                aria-label='Home'
+                title='Home'
+                className={({ isActive }) =>
+                  isActive
+                    ? 'font-medium tracking-wide text-[#ff594e]  transition-colors duration-200 hover:text-deep-purple-accent-400'
+                    : 'font-medium tracking-wide text-[#302e2c]  transition-colors duration-200 hover:text-deep-purple-accent-400'
+                }
+              >
+                FAQ
+              </NavLink>
+            </li>
+
+            <li>
+              <NavLink
+                to='/blog'
+                aria-label='Home'
+                title='Home'
+                className={({ isActive }) =>
+                  isActive
+                    ? 'font-medium tracking-wide text-[#ff594e]  transition-colors duration-200 hover:text-deep-purple-accent-400'
+                    : 'font-medium tracking-wide text-[#302e2c]  transition-colors duration-200 hover:text-deep-purple-accent-400'
+                }
+              >
+                Blog
+              </NavLink>
+            </li>
+ 
             
           
           </ul>
@@ -65,7 +124,7 @@ const Header = () => {
             </button>
             {isMenuOpen && (
               <div className='absolute  top-0 left-0 w-full z-40'>
-                <div className='p-5 bg-gray-300 border rounded shadow-sm'>
+                <div className='p-5 bg-gray-200 border rounded shadow-sm'>
                   <div className='flex items-center justify-between mb-4'>
                     <div>
                       <Link
@@ -74,14 +133,15 @@ const Header = () => {
                         title='proReader'
                         className='inline-flex items-center'
                       >
-                       
-                                    <FaCentos className=' font-bold text-2xl'></FaCentos>
+                       <FaCentos className='text-[#ff594e] font-bold text-2xl'></FaCentos>
+           
 
-                        <span className='ml-2  text-xl font-bold tracking-wide uppercase'>
-                        Easy developer
+           <span className='ml-2 text-xl font-bold tracking-wide #302e2c text-shadow-lg'>
+           Modern <span className='text-[#ff594e]'>Education</span>
 
-                                                  
-                        </span>
+           </span>
+                        
+
                       </Link>
                     </div>
                     <div>
@@ -101,20 +161,71 @@ const Header = () => {
                     </div>
                   </div>
                   <nav>
-                    <ul className='space-y-4'>
-                      <li>
-                        <NavLink
-                          to='/'
-                          aria-label='Home'
-                          title='Home'
-                          className='font-medium tracking-wide text-purple-600 transition-colors duration-200 hover:text-deep-purple-accent-400'
-                        >
-                          Home
-                        </NavLink>
-                      </li>
-                     
-                   
-                    </ul>
+                  <ul className='spacey-4'>
+            <li>
+              <NavLink
+                to='/home'
+                aria-label='Home'
+                title='Home'
+                className={({ isActive }) =>
+                  isActive
+                    ? 'font-medium tracking-wide text-[#ff594e]  transition-colors duration-200 hover:text-deep-purple-accent-400'
+                    : 'font-medium tracking-wide text-[#302e2c] transition-colors duration-200 hover:text-deep-purple-accent-400'
+                }
+              >
+                Home
+              </NavLink>
+            </li>
+
+            <li>
+              <NavLink
+                to='/Courses'
+                aria-label='Home'
+                title='Home'
+                className={({ isActive }) =>
+                  isActive
+                    ? 'font-medium tracking-wide text-[#ff594e]  transition-colors duration-200 hover:text-deep-purple-accent-400'
+                    : 'font-medium tracking-wide text-[#302e2c] transition-colors duration-200 hover:text-deep-purple-accent-400'
+                }
+              >
+                          <button onClick={handleCourses}>{ courses}</button>
+              </NavLink>
+            </li>
+
+
+            <li>
+              <NavLink
+                to='/FAQ'
+                aria-label='Home'
+                title='Home'
+                className={({ isActive }) =>
+                  isActive
+                    ? 'font-medium tracking-wide text-[#ff594e]  transition-colors duration-200 hover:text-deep-purple-accent-400'
+                    : 'font-medium tracking-wide text-[#302e2c]  transition-colors duration-200 hover:text-deep-purple-accent-400'
+                }
+              >
+                FAQ
+              </NavLink>
+            </li>
+
+            <li>
+              <NavLink
+                to='/blog'
+                aria-label='Home'
+                title='Home'
+                className={({ isActive }) =>
+                  isActive
+                    ? 'font-medium tracking-wide text-[#ff594e]  transition-colors duration-200 hover:text-deep-purple-accent-400'
+                    : 'font-medium tracking-wide text-[#302e2c]  transition-colors duration-200 hover:text-deep-purple-accent-400'
+                }
+              >
+                Blog
+              </NavLink>
+            </li>
+ 
+            
+          
+          </ul>
                   </nav>
                 </div>
               </div>
