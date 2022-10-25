@@ -10,6 +10,15 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+.dark-theme{
+  background: rgb(3, 3, 3)!important;
+  color: rgb(160, 116, 116)!important;
+}
+.light-theme{
+  background: rgb(227, 227, 227);
+}
+
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

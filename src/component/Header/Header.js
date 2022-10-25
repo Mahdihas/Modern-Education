@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { FaCentos } from "react-icons/fa";
 import { AuthContext } from '../../context/UserContext';
@@ -8,6 +8,30 @@ import { FaUserAlt } from "react-icons/fa";
 
 
 const Header = () => {
+
+  const [theme, setTheme] = useState('light-theme');
+  const [name, setName] = useState('light');
+
+
+  const toggleTheme = () => {
+  
+    if (theme == "dark-theme") {
+      setTheme("light-theme")
+      setName('light')
+      
+    }
+    else {
+      setTheme("dark-theme")
+      setName('dark')
+    }
+  }
+  
+  useEffect(() => {
+    
+    document.body.className = theme;
+
+
+  },[theme])
 
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const { user, logOut } = useContext(AuthContext);
@@ -117,7 +141,12 @@ const Header = () => {
                 Blog
               </NavLink>
             </li>
-
+           
+            <li>
+            <button className='btn light-theme text-black   capitalize'  onClick={toggleTheme}>
+              {name}
+              </button>
+            </li>
 
             
          
