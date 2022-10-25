@@ -1,10 +1,14 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../context/UserContext'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
 
-  const { signIn } = useContext(AuthContext)
+  const { signIn, setLoading } = useContext(AuthContext)
+  const [error, setError] = useState('');
+
   const location = useLocation(); 
   const from = location.state?.from?.pathname || '/'
   
@@ -23,12 +27,23 @@ const Login = () => {
         .then(result => {
             const user = result.user;
           console.log('sign user', user);
+          setError('');
+
           form.reset();
-          navigate(from, {replace: true})
+          navigate(from, { replace: true })
+          if(user.emailVerified){
+            navigate(from, {replace: true});
+        }
+        else{
+            toast.error('Your email is not verified. Please verify your email address.')
+        }
+          setLoading(false)
 
         })
         .catch(error => {
-            console.error(error)
+          console.error(error)
+          setError(error.message);
+
         })
 
   }
@@ -64,12 +79,16 @@ const Login = () => {
                 <Link to={'/register'}><span className=''>Creat a new account</span></Link>
 
             <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-          </label>
+                </label>
+                <p className='text-red-500'>                {error}
+</p>
         </div>
         <div className="form-control mt-6">
           <button className="btn btn-primary">Login</button>
         </div>
-      </form>
+            </form>
+                    <ToastContainer />
+
     </div>
   </div>
 </div>

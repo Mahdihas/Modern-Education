@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { AuthContext } from '../context/UserContext';
+import ClipLoader from "react-spinners/ClipLoader";
+
 
 
 const PrivateRouter = ({children}) => {
@@ -9,7 +11,7 @@ const PrivateRouter = ({children}) => {
 
     if(loading){
         console.log('yes loading found');
-        return <div>Loading...</div>
+        return <div><ClipLoader color="#36d7b7" /></div>
     }
 
     if(user && user.uid) {

@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { FaCentos } from "react-icons/fa";
 import { AuthContext } from '../../context/UserContext';
+import { FaUserAlt } from "react-icons/fa";
 
 
 
@@ -119,28 +120,26 @@ const Header = () => {
 
 
             
-            {
-                    user?.uid ?
-                        <button className='btn-logout' onClick={handleSignOut}>Log out</button>
-                        :
-                        <>
-                             <li>
-                <NavLink
-                              to='/login'
-                              aria-label='About Us'
-                              title='About Us'
-                              className='font-medium tracking-wide text-purple-600 transition-colors duration-200 hover:text-deep-purple-accent-400'
-                            >
-                              Login
-                            </NavLink>
-                  </li> 
-                  
          
-                  
+            {
+                                user?.uid ?
+                                    <>
+                                        <span>{user?.displayName}</span>
+                  <button className='btn btn-dark' onClick={handleSignOut}>Log out</button>
+                  {user?.photoURL? <image className='w-[100px] h-[100px]' src={user.photoURL}></image>:<FaUserAlt></FaUserAlt>}
 
-                        </>
-                }
-          
+                                    </>
+                                    :
+                                    <>
+                  <Link to='/login'>Login</Link>
+                  
+                                        
+                </>
+              
+            }
+            
+
+
  
             
           
