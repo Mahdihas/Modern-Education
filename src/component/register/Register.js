@@ -4,12 +4,13 @@ import { AuthContext } from '../../context/UserContext'
 import { FaGofore } from "react-icons/fa";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import {FaGithubSquare} from "react-icons/fa";
 
 const Register = () => {
 
 
   const [error, setError] = useState('');
-    const { createUser,signInWithGoogle, updateUserProfile, verifyEmail } = useContext(AuthContext);
+    const { createUser,signInWithGoogle,signInWithGithub, updateUserProfile, verifyEmail } = useContext(AuthContext);
 const navigate =useNavigate()
 
     const handleSubmit = event => {
@@ -65,6 +66,15 @@ const navigate =useNavigate()
     .catch(error => console.error(error));
   }
   
+  const handleGithubSignIn = () => {
+    signInWithGithub()
+      .then(result => {
+        
+        const user = result.user;
+        console.log(user);
+    })
+    .catch(error => console.error(error));
+  }
 
 
 
@@ -176,8 +186,15 @@ const navigate =useNavigate()
         <div className="form-control mt-6">
           <button className="btn btn-primary">Register</button>
               </div>
+              <div className=" flex justify-around items-center">
               <p className='flex justify-center items-center text-3xl font-bold text-[skyblue] text-center'>              <FaGofore onClick={handleGoogleSignIn}></FaGofore>
-</p>
+                
+                </p>
+                
+                <p className='flex justify-center items-center text-3xl font-bold text-[#4da0c0] text-center'>              <FaGithubSquare onClick={handleGithubSignIn} ></FaGithubSquare>
+                  
+                  </p>
+              </div>
             </form>
             <ToastContainer />
 
