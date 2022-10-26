@@ -80,7 +80,7 @@ const Header = () => {
 
             </span>
           </Link>
-          <ul className='flex items-center hidden space-x-8 sm:flex'>
+          <ul className=' items-center hidden space-x-8 lg:flex'>
             <li>
               <NavLink
                 to='/home'
@@ -99,8 +99,8 @@ const Header = () => {
             <li>
               <NavLink
                 to='/Courses'
-                aria-label='Home'
-                title='Home'
+                aria-label='course'
+                title='Course'
                 className={({ isActive }) =>
                   isActive
                     ? 'font-medium tracking-wide text-[#ff594e]  transition-colors duration-200 hover:text-deep-purple-accent-400'
@@ -115,8 +115,8 @@ const Header = () => {
             <li>
               <NavLink
                 to='/FAQ'
-                aria-label='Home'
-                title='Home'
+                aria-label='Faq'
+                title='Faq'
                 className={({ isActive }) =>
                   isActive
                     ? 'font-medium tracking-wide text-[#ff594e]  transition-colors duration-200 hover:text-deep-purple-accent-400'
@@ -130,8 +130,8 @@ const Header = () => {
             <li>
               <NavLink
                 to='/blog'
-                aria-label='Home'
-                title='Home'
+                aria-label='Blog'
+                title='Blog'
                 className={({ isActive }) =>
                   isActive
                     ? 'font-medium tracking-wide text-[#ff594e]  transition-colors duration-200 hover:text-deep-purple-accent-400'
@@ -153,9 +153,10 @@ const Header = () => {
             {
                                 user?.uid ?
                                     <>
-                                        <span>{user?.displayName}</span>
                   <button className='btn btn-dark' onClick={handleSignOut}>Log out</button>
-                  {user?.photoURL? <image className='w-[100px] h-[100px]' src={user.photoURL}></image>:<FaUserAlt></FaUserAlt>}
+                  <img className='w-[50px] h-[50px] rounded-full' title={user?.displayName}  src={user?.photoURL} alt="" />
+
+
 
                                     </>
                                     :
@@ -173,7 +174,7 @@ const Header = () => {
             
           
           </ul>
-          <div className='sm:hidden'>
+          <div className='lg:hidden'>
             <button
               aria-label='Open Menu'
               title='Open Menu'
@@ -216,6 +217,23 @@ const Header = () => {
                         
 
                       </Link>
+
+                      
+            {
+                                user?.uid ?
+                                    <>
+                  <img className='w-[50px] h-[50px] rounded-full' title={user?.displayName}  src={user?.photoURL} alt="" />
+
+
+
+                                    </>
+                                    : 
+                                    <>
+                  
+                                        
+                </>
+              
+            }
                     </div>
                     <div>
                       <button
