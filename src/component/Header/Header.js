@@ -63,7 +63,7 @@ const Header = () => {
 
 
   return (
-    <div className='bg-gray-100'>
+    <div className='bg-gray-100 shadow-lg'>
       <div className='px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8'>
         <div className='relative flex items-center justify-between'>
           <Link
@@ -154,8 +154,8 @@ const Header = () => {
                                 user?.uid ?
                                     <>
                   <button className='btn btn-dark' onClick={handleSignOut}>Log out</button>
-                  <img className='w-[50px] h-[50px] rounded-full' title={user?.displayName}  src={user?.photoURL} alt="" />
-
+                  <img className='w-[50px] h-[50px] rounded-full' title={user?.displayName}  src={user?.photoURL ? user.photoURL:<FaCentos></FaCentos>} alt="" />
+                  
 
 
                                     </>

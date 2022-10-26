@@ -7,42 +7,55 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const Register = () => {
 
-  const { createUser, signInWithGoogle,updateUserProfile, verifyEmail } = useContext(AuthContext);
 
-  const navigate = useNavigate()
   const [error, setError] = useState('');
+    const { createUser,signInWithGoogle, updateUserProfile, verifyEmail } = useContext(AuthContext);
+const navigate =useNavigate()
+
+    const handleSubmit = event => {
+        event.preventDefault();
+        const form = event.target;
+        const name = form.name.value;
+        const photoURL = form.photoURL.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        // console.log(name, photoURL, email, password);
+
+        createUser(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                setError('');
+                form.reset();
+                handleUpdateUserProfile(name, photoURL);
+                handleEmailVerification();
+              toast.success('Please verify your email address.')
+              navigate('/')
+            })
+            .catch(e => {
+                console.error(e);
+                setError(e.message);
+            });
+    }
+
+    const handleUpdateUserProfile = (name, photoURL) => {
+        const profile = {
+            displayName: name,
+            photoURL: photoURL
+        }
+
+        updateUserProfile(profile)
+            .then(() => { })
+            .catch(error => console.error(error));
+    }
+
+    const handleEmailVerification  = () => {
+        verifyEmail()
+        .then(() =>{})
+        .catch(error => console.error(error));
+    }
 
 
-  const handleSubmit = event => {
-    event.preventDefault();
-
-    const form = event.target;
-    const name = form.name.value
-    const email = form.email.value;
-    const password = form.password.value;
-    console.log(name, email, password);
-
-    createUser(email, password)
-        .then(result => {
-            const user = result.user;
-          console.log('registered user', user);
-          setError('');
-          form.reset();
-
-          navigate('/')
-          handleUpdateUserProfile(name);
-          handleEmailVerification();
-          toast.success('Please verify your email address.')
-          
-        })
-        .catch(error => {
-          console.error(error)
-          setError(error.message);
-
-        })
-
-  }
-  
   const handleGoogleSignIn = () => {
     signInWithGoogle()
     .then( result => {
@@ -52,22 +65,67 @@ const Register = () => {
     .catch(error => console.error(error));
   }
   
-  const handleUpdateUserProfile = (name, photoURL) => {
-    const profile = {
-        displayName: name,
-        photoURL: photoURL
-    }
 
-    updateUserProfile(profile)
-        .then(() => { })
-        .catch(error => console.error(error));
-}
 
-const handleEmailVerification  = () => {
-    verifyEmail()
-    .then(() =>{})
-    .catch(error => console.error(error));
-}
+
+
+
+
+
+
+//   const { createUser, signInWithGoogle,updateUserProfile, verifyEmail } = useContext(AuthContext);
+
+//   const navigate = useNavigate()
+//   const [error, setError] = useState('');
+
+
+//   const handleSubmit = event => {
+//     event.preventDefault();
+
+//     const form = event.target;
+//     const name = form.name.value
+//     const email = form.email.value;
+//     const password = form.password.value;
+//     console.log(name, email, password);
+
+//     createUser(email, password)
+//         .then(result => {
+//           const user = result.user;
+//           const phhoto = result.photoURL;
+//           console.log('registered user', user);
+//           setError('');
+//           form.reset();
+
+//           navigate('/')
+//           updateUserProfile(name);
+//           handleEmailVerification();
+//           toast.success('Please verify your email address.')
+          
+//         })
+//         .catch(error => {
+//           console.error(error)
+//           setError(error.message);
+
+//         })
+
+//   }
+  
+//   const handleGoogleSignIn = () => {
+//     signInWithGoogle()
+//     .then( result => {
+//         const user = result.user;
+//         console.log(user);
+//     })
+//     .catch(error => console.error(error));
+//   }
+  
+
+
+// const handleEmailVerification  = () => {
+//     verifyEmail()
+//     .then(() =>{})
+//     .catch(error => console.error(error));
+// }
 
 
   return (
@@ -86,6 +144,16 @@ const handleEmailVerification  = () => {
           </label>
           <input type="text" name='name' placeholder="name" className="input input-bordered" />
               </div>
+
+
+              <div className="form-control">
+          <label className="label">
+            <span className="label-text">PhotoURL</span>
+          </label>
+          <input type="text" name='photoURL' placeholder="PhotoURL" className="input input-bordered" />
+              </div>
+
+
               
         <div className="form-control">
           <label className="label">

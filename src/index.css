@@ -12,10 +12,10 @@ body {
 }
 .dark-theme{
   background: rgb(3, 3, 3)!important;
-  color: rgb(160, 116, 116)!important;
+  color: rgb(101, 94, 94)!important;
 }
 .light-theme{
-  background: rgb(227, 227, 227);
+  background: whitesmoke;
 }
 
 

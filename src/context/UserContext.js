@@ -20,9 +20,13 @@ const UserContext = ({children}) => {
     }
 
 
-    const updateUserProfile = (profile) => {
-        return updateProfile(auth.currentUser, profile);
+    const updateUserProfile = (name,photoURL) => {
+        setLoading(true)
+
+        return updateProfile(auth.currentUser, { displayName: name ,photoURL})
     }
+
+
 
     const verifyEmail = () =>{
         return sendEmailVerification(auth.currentUser);

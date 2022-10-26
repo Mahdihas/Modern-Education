@@ -22,8 +22,8 @@ const DetailsCard = ({ topics }) => {
   
 
   return (
-    <div className=''>
-     < h1 className='py-4'> <span className="mb-5 text-4xl font-bold"> Download Our Courses details <br /> in PDF </span>      <button onClick={handlePrint} className='btn bg-pink-400'><FaCloudDownloadAlt className='mx-2'></FaCloudDownloadAlt>Download</button>
+    <div className='text-center'>
+     < h1 className='py-4'> <span className="mb-5 text-center text-4xl font-bold"> Download Our Courses details <br /> in PDF </span>      <button onClick={handlePrint} className='btn bg-pink-400'><FaCloudDownloadAlt className='mx-2'></FaCloudDownloadAlt>Download</button>
 </h1>
       <h1 className='text-center text-[#dc3545]'>        <FaMinus className='text-center  text-2xl  mx-auto'></FaMinus></h1>
 
