@@ -1,6 +1,6 @@
 import React from 'react'
 import { useLoaderData } from 'react-router-dom';
-import { FaCalendarAlt } from "react-icons/fa";
+import { FaCalendarAlt ,FaDollarSign} from "react-icons/fa";
 
 import { Link } from 'react-router-dom';
 import { FaMinus } from "react-icons/fa";
@@ -12,7 +12,7 @@ const CheckoutRoute = () => {
 
   const topics = useLoaderData()
 
-  const { img, details, time, rating, Teacher, profie, title, about, _id } = topics;
+  const { img, details, time, rating,total_view, Teacher, profie, title, about, _id } = topics;
   
   // console.log(topics);
   
@@ -28,7 +28,9 @@ const CheckoutRoute = () => {
 </div>
 
     
-            <h2 className='w-[150px] flex items-center'><FaCalendarAlt></FaCalendarAlt> <span className='px-4'>{time}</span> </h2>
+          <h2 className='w-[150px] flex items-center'><FaCalendarAlt></FaCalendarAlt> <span className='px-4'>{time}</span> </h2>
+          <h2 className='w-[150px] font-bold  flex items-center'>  Price : <span className='flex justify-center items-center px-4'>{total_view}<FaDollarSign></FaDollarSign></span> </h2>
+
        
             <h2 className=' flex items-center text-yellow-500'>Rating : <FaGem className='mx-2'></FaGem>  <FaGem className='mx-2'></FaGem>  <FaGem className='mx-2'></FaGem> { rating.number}</h2>
 

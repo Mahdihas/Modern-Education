@@ -4,7 +4,7 @@ import React, { useRef } from 'react'
 import { FaCalendarAlt} from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import { FaMinus } from "react-icons/fa";
-import { FaCloudDownloadAlt } from "react-icons/fa";
+import { FaCloudDownloadAlt,FaDollarSign } from "react-icons/fa";
 import { FaGem } from "react-icons/fa";
 import { useReactToPrint } from 'react-to-print';
 
@@ -18,7 +18,9 @@ const DetailsCard = ({ topics }) => {
   });
 
   
-  const { img, details, time,rating,Teacher, title,about, _id } = topics;
+  const { img, details, time, total_view
+,    rating, Teacher, title, about, _id } = topics;
+  console.log(topics);
   
 
   return (
@@ -32,11 +34,13 @@ const DetailsCard = ({ topics }) => {
     <div className="card card-compact w-full sm:w-[70%] lg:w-[60%] mx-auto mt-6 py-6  bg-base-100 shadow-xl">
 <figure><img className='h-[300px] w-full' src={img} alt="Shoes" /></figure>
 <div ref={componentRef} className="card-body">
-            <h2 className="card-title text-[#373737] font-bold capitalize">{title}</h2>
+            <h2 className="card-title text-[#373737] font-bold capitalize"> Course Name : {title}</h2>
             <h2 className="card-title text-[#373737] font-bold">Teacher : {Teacher}</h2>
 
     
             <h2 className='w-[150px] flex items-center'><FaCalendarAlt></FaCalendarAlt> <span className='px-4'>{time}</span> </h2>
+            <h2 className='w-[150px] font-bold  flex items-center'>  Price : <span className='flex justify-center items-center px-4'>{total_view}<FaDollarSign></FaDollarSign></span> </h2>
+
        
             <h2 className=' flex items-center text-yellow-500'>Rating : <FaGem className='mx-2'></FaGem>  <FaGem className='mx-2'></FaGem>  <FaGem className='mx-2'></FaGem> { rating.number}</h2>
 
