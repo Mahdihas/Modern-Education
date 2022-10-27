@@ -23,7 +23,6 @@ const UserContext = ({children}) => {
 
 
     const updateUserProfile = (profile) => {
-        setLoading(true)
 
         return updateProfile(auth.currentUser, profile);
     }
@@ -56,6 +55,7 @@ const UserContext = ({children}) => {
     }
 
     const logOut = () => {
+        setLoading(true)
         return signOut(auth);
     }
 

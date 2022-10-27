@@ -15,19 +15,21 @@ const Courses = () => {
               
           {
             
-            categories.map(category => <Card key={category.id} category={category}></Card>)
+            categories.map(category => <Card key={category.category_id} category={category}></Card>)
         }          </div>
-          <div className="w-full text-center shadow-sm  sm:w-[20%]">
-          <h1 className='text-[#302e2c] py-4 font-bold l'>
+          <div className="w-full text-center shadow-sm overflow-hidden  sm:w-[20%]">
+          <div className=" text-center bg-base-100">
+ <h1 className=' py-4 shadow-lg bg-slate-200 rounded-lg font-bold text-center'>
        COURSE CATEGORIES
               </h1>
+</div>
               <div className="">
         
               
             
                   {
-                      categories.map(category => <p className='py-3 text-green-700 font-bold' key={category.id}>
-                          <Link to={`/topics/${category.id}`}>{category.name}</Link>
+                      categories.map(category => <p className='py-3 text-green-700 bg-slate-200  font-bold' key={category.id}>
+                          <Link className=' ' to={`/topics/${category.id}`}><div className="bg-emerald-500		  text-white overflow-hidden w-[100%] mx-auto">{category.name}</div></Link>
                       </p>)
                   }
                   

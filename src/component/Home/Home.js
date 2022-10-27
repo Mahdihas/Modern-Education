@@ -39,7 +39,7 @@ const Home = () => {
         <div className="   px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {
             
-            categories.map(category => <Card key={category.id} category={category}></Card>)
+            categories.map(category => <Card key={category.category_id} category={category}></Card>)
         }
         </div>
 

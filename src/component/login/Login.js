@@ -10,9 +10,10 @@ const Login = () => {
   const [error, setError] = useState('');
 
   const location = useLocation(); 
-  const from = location.state?.from?.pathname || '/'
+  const navigate = useNavigate()
+
+  const from = location.state?.from?.pathname || '/';
   
-   const navigate = useNavigate()
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -36,7 +37,6 @@ const Login = () => {
         else{
             toast.error('Your email is not verified. Please verify your email address.')
         }
-          setLoading(false)
 
         })
         .catch(error => {
@@ -44,6 +44,10 @@ const Login = () => {
           setError(error.message);
 
         })
+      .finally(() => {
+        setLoading(false)
+      
+    })
 
   }
 
@@ -52,7 +56,7 @@ const Login = () => {
   return (
     <div>
 
-<div className=" bg-base-200 h-[100vh]   px-4 pt-8">
+<div className=" bg-base-200 py-12  px-4 pt-8">
   <div className=" ">
   
     <div className="card w-full sm:w-[60%] sm:mt-12 lg:w-[40%]  mx-auto shadow-2xl bg-base-100">
@@ -83,7 +87,7 @@ const Login = () => {
 </p>
         </div>
         <div className="form-control mt-6">
-          <button className="btn btn-primary">Login</button>
+          <button className="btn btn-primary text-white">Login</button>
         </div>
             </form>
                     <ToastContainer />

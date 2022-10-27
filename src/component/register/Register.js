@@ -11,7 +11,7 @@ const Register = () => {
 
 
   const [error, setError] = useState('');
-    const { createUser,signInWithGoogle,signInWithGithub, updateUserProfile, verifyEmail } = useContext(AuthContext);
+    const { createUser,signInWithGoogle,signInWithGithub, updateUserProfile, verifyEmail,setLoading} = useContext(AuthContext);
 const navigate =useNavigate()
 
     const handleSubmit = event => {
@@ -32,7 +32,7 @@ const navigate =useNavigate()
                 handleUpdateUserProfile(name, photoURL);
                 handleEmailVerification();
               toast.success('Please verify your email address.')
-              navigate('/')
+
             })
             .catch(e => {
                 console.error(e);

@@ -219,21 +219,24 @@ const Header = () => {
                       </Link>
 
                       
+            
             {
-                                user?.uid ?
-                                    <>
-                  <img className='w-[50px] h-[50px] rounded-full' title={user?.displayName}  src={user?.photoURL} alt="" />
+              user?.uid ?
+                  <>
+<button className='btn btn-dark sm:mx-4 my-4' onClick={handleSignOut}>Log out</button>
+<img className='w-[50px] h-[50px] rounded-full' title={user?.displayName}  src={user?.photoURL ? user.photoURL:<FaCentos></FaCentos>} alt="" />
 
 
 
-                                    </>
-                                    : 
-                                    <>
-                  
-                                        
-                </>
-              
-            }
+                  </>
+                  :
+                  <>
+<Link to='/login'>Login</Link>
+
+                      
+</>
+
+}
                     </div>
                     <div>
                       <button

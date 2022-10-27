@@ -11,8 +11,11 @@ import { FaGem } from "react-icons/fa";
 const CheckoutRoute = () => {
 
   const topics = useLoaderData()
-  const { img, details, time,rating,Teacher,profie,title,about, _id  } = topics;
-console.log(topics);
+
+  const { img, details, time, rating, Teacher, profie, title, about, _id } = topics;
+  
+  // console.log(topics);
+  
   return (
     <div className='py-4'> <div>
       <div className="card card-compact w-full sm:w-[70%] lg:w-[60%] mx-auto mt-6 py-6  bg-base-100 shadow-xl">

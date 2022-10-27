@@ -28,7 +28,7 @@ Manage payment settings and invoices
    2. Our schedule ?
   </div>
   <div className="collapse-content "> 
-    <p className='text-center text-1xl my-2 font-serif'>16 hour in a day our team member guide yo if you want any help they respone you. but there </p>
+    <p className='text-center text-1xl my-2 font-serif'>16 hour in a day our team members guide you if you want any help they response you. but there </p>
   </div>
       </div>
       
