@@ -2,9 +2,10 @@ import React, { useContext, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../context/UserContext'
 import { FaGofore } from "react-icons/fa";
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import {FaGithubSquare} from "react-icons/fa";
+import { FaGithubSquare } from "react-icons/fa";
+import toast, { Toaster } from 'react-hot-toast';
+
 
 const Register = () => {
 
@@ -39,6 +40,8 @@ const navigate =useNavigate()
             });
     }
 
+  
+
     const handleUpdateUserProfile = (name, photoURL) => {
         const profile = {
             displayName: name,
@@ -48,7 +51,8 @@ const navigate =useNavigate()
         updateUserProfile(profile)
             .then(() => { })
             .catch(error => console.error(error));
-    }
+  }
+  
 
     const handleEmailVerification  = () => {
         verifyEmail()
@@ -61,7 +65,9 @@ const navigate =useNavigate()
     signInWithGoogle()
     .then( result => {
         const user = result.user;
-        console.log(user);
+      console.log(user);
+      toast.success('Sussessfully complete')
+      navigate('/')
     })
     .catch(error => console.error(error));
   }
@@ -71,6 +77,8 @@ const navigate =useNavigate()
       .then(result => {
         
         const user = result.user;
+        toast.success('Sussessfully complete')
+        navigate('/')
         console.log(user);
     })
     .catch(error => console.error(error));
@@ -78,64 +86,6 @@ const navigate =useNavigate()
 
 
 
-
-
-
-
-
-//   const { createUser, signInWithGoogle,updateUserProfile, verifyEmail } = useContext(AuthContext);
-
-//   const navigate = useNavigate()
-//   const [error, setError] = useState('');
-
-
-//   const handleSubmit = event => {
-//     event.preventDefault();
-
-//     const form = event.target;
-//     const name = form.name.value
-//     const email = form.email.value;
-//     const password = form.password.value;
-//     console.log(name, email, password);
-
-//     createUser(email, password)
-//         .then(result => {
-//           const user = result.user;
-//           const phhoto = result.photoURL;
-//           console.log('registered user', user);
-//           setError('');
-//           form.reset();
-
-//           navigate('/')
-//           updateUserProfile(name);
-//           handleEmailVerification();
-//           toast.success('Please verify your email address.')
-          
-//         })
-//         .catch(error => {
-//           console.error(error)
-//           setError(error.message);
-
-//         })
-
-//   }
-  
-//   const handleGoogleSignIn = () => {
-//     signInWithGoogle()
-//     .then( result => {
-//         const user = result.user;
-//         console.log(user);
-//     })
-//     .catch(error => console.error(error));
-//   }
-  
-
-
-// const handleEmailVerification  = () => {
-//     verifyEmail()
-//     .then(() =>{})
-//     .catch(error => console.error(error));
-// }
 
 
   return (
@@ -196,7 +146,7 @@ const navigate =useNavigate()
                   </p>
               </div>
             </form>
-            <ToastContainer />
+            <Toaster />
 
     </div>
   </div>

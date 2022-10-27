@@ -22,10 +22,10 @@ const UserContext = ({children}) => {
     }
 
 
-    const updateUserProfile = (name,photoURL) => {
+    const updateUserProfile = (profile) => {
         setLoading(true)
 
-        return updateProfile(auth.currentUser, { displayName: name ,photoURL})
+        return updateProfile(auth.currentUser, profile);
     }
 
 
@@ -73,7 +73,17 @@ const UserContext = ({children}) => {
 
     }, [])
 
-    const authInfo = {user, loading, createUser,signInWithGithub, signIn,verifyEmail, logOut,updateUserProfile, signInWithGoogle}
+    const authInfo = {
+        user,
+        loading,
+        createUser,
+        signInWithGithub,
+        signIn,
+        verifyEmail,
+        logOut,
+        updateUserProfile,
+        signInWithGoogle
+    }
 
     return (
         <AuthContext.Provider value={authInfo}>

@@ -44,7 +44,7 @@ const DetailsCard = ({ topics }) => {
             <p className='text-start'><span className='font-bold text-1xl'>Do hardwork :</span> { about}</p>
 
           <div className="card-actions justify-center">
-          <button className="btn w-[100%] sm:w-[50%] bg-[#dc3545] my-4">  <Link className='' to={`/checkoutRout/${topics._id}`}>Get Premium Access </Link> </button>
+          <Link className='w-[100%]' to={`/checkoutRout/${topics._id}`}> <button className="btn w-[100%] sm:w-[50%] bg-[#dc3545] my-4">  Get Premium Access </button></Link> 
 
       
 

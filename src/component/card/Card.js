@@ -11,7 +11,7 @@ const Card = ({ category }) => {
           <h2 className="card-title text-[#373737] font-bold">{name}</h2>
           <h2 className=' text-[#373737] font-bold'> Teacher : { Teacher}</h2>
     <div className="card-actions justify-center">
-    <button className="btn w-[100%] sm:w-[100%] bg-[#dc3545] my-4">  <Link className='' to={`/topics/${category.id}`}>See Details </Link> </button>
+    <Link className='w-[100%]' to={`/topics/${category.id}`}> <button className="btn w-[100%] sm:w-[100%] bg-[#dc3545] my-4">  See Details </button></Link> 
     </div>
   </div>
 </div>
