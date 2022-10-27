@@ -2,11 +2,13 @@ import React, { useContext, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../context/UserContext'
 import { ToastContainer, toast } from 'react-toastify';
+import { FaGithubSquare } from "react-icons/fa";
+import { FaGofore } from "react-icons/fa";
 import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
 
-  const { signIn, setLoading } = useContext(AuthContext)
+  const { signIn,signInWithGoogle,signInWithGithub, setLoading } = useContext(AuthContext)
   const [error, setError] = useState('');
 
   const location = useLocation(); 
@@ -14,6 +16,32 @@ const Login = () => {
 
   const from = location.state?.from?.pathname || '/';
   
+
+  
+
+  const handleGoogleSignIn = () => {
+    signInWithGoogle()
+    .then( result => {
+        const user = result.user;
+      console.log(user);
+      toast.success('Sussessfully complete')
+      navigate('/')
+    })
+    .catch(error => console.error(error));
+  }
+  
+  const handleGithubSignIn = () => {
+    signInWithGithub()
+      .then(result => {
+        
+        const user = result.user;
+        toast.success('Sussessfully complete')
+        navigate('/')
+        console.log(user);
+    })
+    .catch(error => console.error(error));
+  }
+
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -53,6 +81,9 @@ const Login = () => {
 
 
 
+
+
+
   return (
     <div>
 
@@ -87,8 +118,18 @@ const Login = () => {
 </p>
         </div>
         <div className="form-control mt-6">
-          <button className="btn btn-primary text-white">Login</button>
-        </div>
+                <button className="btn btn-primary text-white">Login</button>
+                
+              </div>
+              <div className=" flex justify-around items-center">
+              <p className='flex justify-center items-center text-3xl font-bold text-[skyblue] text-center'>              <FaGofore onClick={handleGoogleSignIn}></FaGofore>
+                
+                </p>
+                
+                <p className='flex justify-center items-center text-3xl font-bold text-[#4da0c0] text-center'>              <FaGithubSquare onClick={handleGithubSignIn} ></FaGithubSquare>
+                  
+                  </p>
+              </div>
             </form>
                     <ToastContainer />
 
